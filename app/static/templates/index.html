@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+</head>
+
+<body>
+
+
+    <div id="app" class="vue-app">
+
+        <div class="app-panel">
+
+            <div class="panel-title">Task creation</div>
+
+            <div class="panel-control">
+
+                <div class="input-wrapper">
+                    <div class="input-title">Enter x</div>
+                    <input v-model.trim.number="x">
+                </div>
+
+                <div class="input-wrapper">
+                    <div class="input-title">Enter y</div>
+                    <input v-model.trim.number="y">
+                </div>
+
+                <div class="input-wrapper">
+                    <div class="input-title">Enter operator</div>
+                    <input v-model.trim="operator">
+                </div>
+
+                <div class="button" @click="createTaskClickHandler">Create Task</div>
+            </div>
+            
+            <div :class="{'panel-result': true, 'panel-result-fail': !first_panel_success}">
+                {{ first_panel_result }}
+            </div>
+            
+        </div>
+
+        <div class="app-panel">
+            
+            <div class="panel-title">Task checker</div>
+
+            <div class="panel-control">
+
+                <div class="input-wrapper">
+                    <div class="input-title">Enter task id</div>
+                    <input v-model.trim.number="task_id">
+                </div>
+
+                <div class="button" @click="checkTaskClickHandler">Check task</div>
+
+            </div>
+
+            <div :class="{'panel-result': true, 'panel-result-fail': !second_panel_success}">
+                {{ second_panel_result }}
+            </div>
+
+
+        </div>
+
+        <div class="app-panel panel-three">
+
+            <div class="panel-title">Task report</div>
+            <div class="button" @click="allTaskClickHandler">Get all tasks</div>
+            
+            <div class="task-table">
+                <div class="task-row task-row-header">
+                    <div class="task-column task-column-header">Descr</div>
+                    <div class="task-column task-column-header">Status</div>
+                    <div class="task-column task-column-header">Result</div>
+                </div>
+
+                <div class="task-row" v-for="task in all_task">
+                    <div class="task-column">{{ task.description }}</div>
+                    <div class="task-column">{{ task.status }}</div>
+                    <div class="task-column">{{ task.status == "finished" ? task.result : "-" }}</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function sendXHR(data, url, suc_cb, fail_cl) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", url);
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            
+            xhr.onload = () => {
+                response = JSON.parse(xhr.responseText);
+                if (xhr.status == 200) suc_cb(response)
+                if (xhr.status == 400) fail_cl(response)
+            }
+
+            xhr.send(JSON.stringify(data));
+        }
+    </script>
+    <script src="static/js/main.js"></script>
+
+</body>
+
+</html>

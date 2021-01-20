@@ -1,0 +1,109 @@
+body {
+    background-image: url(../img/grecha.jpg);
+    margin: 0;
+    padding: 0;
+}
+
+.vue-app {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 50px;
+    padding-bottom: 0;
+}
+
+.app-panel {
+    background-color: #ffffffe8;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.panel-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.panel-control {
+    align-items: flex-end;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.input-wrapper {
+    margin-right: 20px;
+}
+
+.input-title {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+input {
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 22px;
+    width: 50px;
+}
+
+.button {
+    background-color: #c5f30e;
+    border-radius: 4px;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.button:hover {
+    top: 1px;
+    left: 1px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.panel-result {
+    color: green;
+    font-size: 18px;
+    min-height: 50px;
+}
+
+.panel-result-fail {
+    color: red;
+}
+
+.panel-three {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-table {
+    margin-top: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.task-row {
+    font-size: 18px;
+    display: flex;
+}
+
+.task-row-header {
+    font-size: 22px;
+    border-bottom: 1px solid black;
+}
+
+.task-column {
+    border-right: 1px solid black;
+    padding: 2px 3px;
+    width: 100px;
+}
+
+.task-column:last-of-type {
+    border-right: 0;
+}
+
+
+
